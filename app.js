@@ -62,7 +62,7 @@ firstpageanim();
 ovalCircle();
 
 document.querySelectorAll(".elem").forEach((elem) => {
-  let positionx;
+  let positionx = 0;
   let diffx;
   elem.addEventListener("mouseleave", () => {
     gsap.to(elem.querySelector("img"), {
@@ -71,12 +71,11 @@ document.querySelectorAll(".elem").forEach((elem) => {
   });
   elem.addEventListener("mousemove", (details) => {
     let diffy = details.clientY - elem.getBoundingClientRect().top;
-    console.log(elem.getBoundingClientRect());
     diffx = details.clientX - positionx;
     positionx = details.clientX;
     gsap.to(elem.querySelector("img"), {
       opacity: 1,
-      ease: Power3,
+      ease: "Power3.Out",
       top: diffy,
       left: details.clientX,
       rotate: gsap.utils.clamp(-20, 20, diffx),
